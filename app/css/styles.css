@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #24221F; }
+  body .container {
+    margin-top: 85px;
+    position: relative; }
+    body .container .loading {
+      position: absolute;
+      width: 95%;
+      margin: 0 auto;
+      top: 80%;
+      text-align: center; }
+    body .container .market-info {
+      color: #FCF7F9;
+      display: flex;
+      width: 95%;
+      margin: 0 auto;
+      margin-bottom: 15px;
+      justify-content: space-between; }
+      body .container .market-info p {
+        text-align: center; }
+      body .container .market-info span {
+        color: #43D64E;
+        font-weight: bold; }
+    @media screen and (max-width: 767px) {
+      body .container .market-info {
+        display: none; } }
+    body .container .nav-primary {
+      background-color: #FCF7F9;
+      display: flex;
+      align-items: center;
+      height: 45px; }
+      body .container .nav-primary .nav__home {
+        display: flex; }
+        body .container .nav-primary .nav__home a {
+          display: flex;
+          align-items: center;
+          text-decoration: none; }
+          body .container .nav-primary .nav__home a .nav-logo {
+            width: 35px;
+            margin-left: 15px; }
+          body .container .nav-primary .nav__home a p {
+            font-family: 'Righteous', cursive;
+            color: #24221F;
+            font-size: 25px;
+            margin-left: 10px;
+            transition: 0.3s; }
+            body .container .nav-primary .nav__home a p:hover {
+              color: rgba(36, 34, 31, 0.488); }
+      body .container .nav-primary .nav__tools {
+        display: flex;
+        justify-content: flex-end;
+        width: 77%;
+        margin: 0 auto; }
+        body .container .nav-primary .nav__tools a {
+          text-decoration: none;
+          color: #000000; }
+        body .container .nav-primary .nav__tools .nav__tools--item {
+          margin: 0 15px; }
+      body .container .nav-primary .nav-hamburger {
+        margin-right: 10px;
+        display: none;
+        background-color: transparent;
+        border: none;
+        cursor: pointer; }
+        body .container .nav-primary .nav-hamburger img {
+          width: 25px; }
+      @media screen and (max-width: 767px) {
+        body .container .nav-primary .nav-hamburger {
+          display: flex; }
+        body .container .nav-primary .nav__tools--item {
+          display: none; } }
+    body .container .nav-secondary {
+      background-color: red;
+      display: none;
+      height: 365px; }
+    body .container .table .table-content .row-coin .logoNameCoin {
+      display: flex;
+      align-items: center; }
+    body .container .table .table-content .row-coin > .logoNameCoin {
+      margin-top: -1px; }
+    body .container .table .table-content .row-coin img {
+      margin-right: 5px; }
