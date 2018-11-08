@@ -1,6 +1,5 @@
 UIController = (function(){
 
-
     const DOMstrings = {
         activeCrypto: '.market-info__activeCrypto--data',
         marketCap: '.market-info__marketCap--data',
@@ -9,6 +8,7 @@ UIController = (function(){
         navSecondary: '.nav-secondary',
         navHamburgerBtn: '.nav-hamburger',
         logoNameCoin: '.logoNameCoin',
+        coinFavouriteBtn: '.addCoinFavourite',
         coinSymbol: '.coinSymbol',
         coinMarketCap: '.coinMarketCap',
         coinPrice: '.coinPrice',
@@ -17,6 +17,12 @@ UIController = (function(){
         coinWeekChange: '.coinWeekChange',
         coinDailyVolume: '.coinDailyVolume'
     };
+
+    // const addCoinToFavourites = () => {
+    //     let DOM = UIController.getDOMStrings();
+    //     let favouriteBtn = document.querySelector(DOM.getDOMStrings.coinFavouriteBtn);
+    //     favouriteBtn
+    // }
 
     return{
         navHambBtnClick: function() {
@@ -90,7 +96,7 @@ const controller = (function(UIController){
                
                 row.innerHTML = `
                     <th scope='row'>${index}</th>
-                    <td class="logoNameCoin"><img width='25px' class="logoCoin" src='https://chasing-coins.com/api/v1/std/logo/${item.symbol}'/> <a href="${item.url}"><p class="nameCoin">${secondApi_dataArray[secondApiArrayIndex].name}</p></a><button class="addCoinFavourite"</td>
+                    <td class="logoNameCoin"><img width='25px' class="logoCoin" src='https://chasing-coins.com/api/v1/std/logo/${item.symbol}'/> <a href="${item.url}"><p class="nameCoin">${secondApi_dataArray[secondApiArrayIndex].name}</p></a><button class="addCoinFavourite"></button></td>
                     <td class="coinSymbol"><p>${item.symbol}</p></td>
                     <td class="coinMarketCap"><p>$ ${numberRound(item.cap)} </p></td>
                     <td class="coinPrice"><p>$ ${parseFloat(Math.round(item.price * 100) / 100).toFixed(2)}</p></td>
@@ -125,6 +131,8 @@ const controller = (function(UIController){
         document.querySelector(DOM.navHamburgerBtn).addEventListener('click', function(){
             $(DOM.navSecondary).toggle();
         });
+
+
     }
 
     const getMarketInfo = () => {

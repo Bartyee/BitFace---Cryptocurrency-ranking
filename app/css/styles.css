@@ -21,6 +21,9 @@ body {
       margin: 0 auto;
       margin-bottom: 15px;
       justify-content: space-between; }
+      @media screen and (max-width: 635px) {
+        body .container-fluid .market-info .market-info {
+          display: none; } }
       body .container-fluid .market-info p {
         text-align: center;
         color: #43D64E;
@@ -28,11 +31,15 @@ body {
         body .container-fluid .market-info p span {
           color: #FCF7F9;
           font-weight: 100; }
+    @media screen and (max-width: 635px) {
+      body .container-fluid .market-info {
+        display: none; } }
     body .container-fluid .nav-primary {
       background-color: #FCF7F9;
       display: flex;
       align-items: center;
-      height: 45px; }
+      height: 45px;
+      min-width: 502px; }
       body .container-fluid .nav-primary .nav__home {
         display: flex; }
         body .container-fluid .nav-primary .nav__home a {
@@ -57,7 +64,11 @@ body {
         margin: 0 auto; }
         body .container-fluid .nav-primary .nav__tools a {
           text-decoration: none;
-          color: #000000; }
+          color: #000000;
+          font-weight: bold;
+          transition: 0.3s; }
+          body .container-fluid .nav-primary .nav__tools a:hover {
+            color: #43D64E; }
         body .container-fluid .nav-primary .nav__tools .nav__tools--item {
           margin: 0 15px; }
       body .container-fluid .nav-primary .nav-hamburger {
@@ -68,7 +79,7 @@ body {
         cursor: pointer; }
         body .container-fluid .nav-primary .nav-hamburger img {
           width: 25px; }
-      @media screen and (max-width: 767px) {
+      @media screen and (max-width: 770px) {
         body .container-fluid .nav-primary .nav-hamburger {
           display: flex; }
         body .container-fluid .nav-primary .nav__tools--item {
@@ -76,27 +87,44 @@ body {
     body .container-fluid .nav-secondary {
       display: none;
       height: 365px; }
-    body .container-fluid .table th {
-      text-align: center; }
-    body .container-fluid .table .table-content .row-coin {
-      text-align: center; }
-      body .container-fluid .table .table-content .row-coin .logoNameCoin {
-        display: flex;
-        align-items: center; }
-        body .container-fluid .table .table-content .row-coin .logoNameCoin > .logoNameCoin {
-          margin-top: -1px; }
-        body .container-fluid .table .table-content .row-coin .logoNameCoin a {
-          text-decoration: none;
-          color: #ffff; }
-        body .container-fluid .table .table-content .row-coin .logoNameCoin .addCoinFavourite {
-          padding: 5px;
-          margin-left: 15px;
-          background-color: transparent;
-          border-radius: 20px;
-          border: solid #43D64E 1px;
-          cursor: pointer;
-          transition: 0.3s; }
-          body .container-fluid .table .table-content .row-coin .logoNameCoin .addCoinFavourite:hover {
-            background-color: #43D64E; }
-        body .container-fluid .table .table-content .row-coin .logoNameCoin .logoCoin {
-          margin-right: 5px; }
+    body .container-fluid .table {
+      min-width: 502px; }
+      body .container-fluid .table th {
+        text-align: center; }
+      body .container-fluid .table .table-content .row-coin {
+        text-align: center; }
+        body .container-fluid .table .table-content .row-coin .logoNameCoin {
+          display: flex;
+          align-items: center; }
+          body .container-fluid .table .table-content .row-coin .logoNameCoin .logoCoin {
+            margin-right: 5px; }
+          body .container-fluid .table .table-content .row-coin .logoNameCoin > .logoNameCoin {
+            margin-top: -1px; }
+          body .container-fluid .table .table-content .row-coin .logoNameCoin a {
+            text-decoration: none;
+            color: #ffff; }
+          body .container-fluid .table .table-content .row-coin .logoNameCoin .addCoinFavourite {
+            padding: 5px;
+            margin-left: 15px;
+            background-color: transparent;
+            border-radius: 20px;
+            border: solid #43D64E 1px;
+            cursor: pointer;
+            transition: 0.3s; }
+            body .container-fluid .table .table-content .row-coin .logoNameCoin .addCoinFavourite:hover {
+              background-color: #43D64E; }
+      @media screen and (max-width: 1030px) {
+        body .container-fluid .table .volume24h-column, body .container-fluid .table .coinDailyVolume {
+          display: none; } }
+      @media screen and (max-width: 870px) {
+        body .container-fluid .table .coinSymbol, body .container-fluid .table .symbol-column {
+          display: none; }
+        body .container-fluid .table .logoNameCoin {
+          width: 150px;
+          text-align: center; } }
+      @media screen and (max-width: 715px) {
+        body .container-fluid .table .coinMarketCap, body .container-fluid .table .marketCap-column {
+          display: none; } }
+  @media screen and (max-width: 635px) {
+    body .container-fluid {
+      margin-top: 50px; } }

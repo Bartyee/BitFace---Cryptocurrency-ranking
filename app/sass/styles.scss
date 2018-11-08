@@ -27,11 +27,6 @@ body{
             text-align: center;
         }
 
-        
-
-        
-        
-
         .market-info{
             color: $secondary-color;
             display: flex;
@@ -39,6 +34,12 @@ body{
             margin: 0 auto;
             margin-bottom: 15px;
             justify-content: space-between;
+
+            @media screen and(max-width: 635px){
+                .market-info{
+                    display: none;
+                }
+            }
 
             p{
                 text-align: center;
@@ -50,6 +51,14 @@ body{
                     font-weight: 100;
                 }
             }
+
+            
+        }
+
+        @media screen and(max-width: 635px){
+            .market-info{
+                display: none;
+            }
         }
 
         
@@ -59,6 +68,7 @@ body{
             display: flex;
             align-items: center;
             height: 45px;
+            min-width: 502px;
 
             .nav__home{
                 display: flex;
@@ -99,10 +109,19 @@ body{
                 a{
                     text-decoration: none;
                     color: #000000;
+                    font-weight: bold;
+                    transition: 0.3s;
+
+                    &:hover{
+                        
+                        color: $primary-color;
+                    }
                 }
 
                 .nav__tools--item{
                     margin: 0 15px;
+
+                    
                 }
             }
 
@@ -119,7 +138,8 @@ body{
 
             }
 
-            @media screen and (max-width: 767px){
+            @media screen and (max-width: 770px){
+                
                 .nav-hamburger{
                     display: flex;
                 }
@@ -137,6 +157,8 @@ body{
 
         .table{
 
+            min-width: 502px;
+
             th{
                 text-align: center;
             }
@@ -149,6 +171,11 @@ body{
                     .logoNameCoin{
                         display: flex;
                         align-items: center;
+                        
+
+                        .logoCoin{
+                            margin-right: 5px;
+                        }
 
                         & > .logoNameCoin{
                             margin-top: -1px;
@@ -173,19 +200,46 @@ body{
                                 background-color: $primary-color;
                             }
                         }
-
-                        
-
-                        .logoCoin{
-                            margin-right: 5px;
-                        }
                     }
-
                 }
+
+            }
+
+            @media screen and (max-width: 1030px){
+                .volume24h-column, .coinDailyVolume{
+                    display: none;
+                }
+            }
+
+            @media screen and(max-width: 870px){
+                .coinSymbol, .symbol-column{
+                    display: none;
+                }
+
+                .logoNameCoin{
+                    width: 150px;
+                    text-align: center;
+                }
+            }
+
+            @media screen and(max-width: 715px){
+                .coinMarketCap, .marketCap-column{
+                    display: none;
+                }
+
+                
             }
         }
     }
+
+    @media screen and(max-width: 635px){
+        .container-fluid{
+            margin-top: 50px;
+        }
+    }
 }
+
+
     
 
     
