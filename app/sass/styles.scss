@@ -3,6 +3,7 @@ $secondary-color: #FCF7F9;
 $third-color: #24221F;
 $fourth-color: #2E8698;
 $sixth-color: #205A5E;
+$eight-color: #ff0000;
 
 
 *{
@@ -14,7 +15,7 @@ body{
     height: 100%;
     background-color: $third-color;
 
-    .container{
+    .container-fluid{
         margin-top: 85px;
         position: relative;
 
@@ -40,22 +41,18 @@ body{
             justify-content: space-between;
 
             p{
-                
                 text-align: center;
-            }
-
-            span{
                 color: $primary-color;
-                
                 font-weight: bold;
+
+                span{
+                    color: $secondary-color;
+                    font-weight: 100;
+                }
             }
         }
 
-        @media screen and (max-width: 767px){
-            .market-info{
-                display: none;
-            }
-        }
+        
 
         .nav-primary{
             background-color: $secondary-color;
@@ -96,7 +93,7 @@ body{
             .nav__tools{
                 display: flex;
                 justify-content: flex-end;
-                width: 77%;
+                width: 90%;
                 margin: 0 auto;
 
                 a{
@@ -133,39 +130,62 @@ body{
         }
 
         .nav-secondary{
-            background-color: red;
+            
             display: none;
             height: 365px;
         }
 
         .table{
+
+            th{
+                text-align: center;
+            }
             
             .table-content{
 
-                
-                
                 .row-coin{
+                    text-align: center;
 
                     .logoNameCoin{
                         display: flex;
                         align-items: center;
-                    }
-                    & > .logoNameCoin{
-                        margin-top: -1px;
-                    }
 
-                    
+                        & > .logoNameCoin{
+                            margin-top: -1px;
+                        }
+                        
 
-                    
+                        a{
+                            text-decoration: none;
+                            color: #ffff;
+                        }
 
-                        img{
+                        .addCoinFavourite{
+                            padding: 5px;
+                            margin-left: 15px;
+                            background-color: transparent;
+                            border-radius: 20px;
+                            border: solid $primary-color 1px;
+                            cursor: pointer;
+                            transition: 0.3s;
+
+                            &:hover{
+                                background-color: $primary-color;
+                            }
+                        }
+
+                        
+
+                        .logoCoin{
                             margin-right: 5px;
                         }
                     }
+
                 }
             }
         }
     }
+}
     
 
     

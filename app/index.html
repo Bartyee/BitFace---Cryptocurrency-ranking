@@ -14,15 +14,14 @@
 </head>
 <body>
     
-    <div class="container">
+    <div class="container-fluid">
         <div class="loading">
             <img src="./images/spinner-loading.svg" />
         </div>
         <div class="market-info">
-            <p class="market-info__cryptoAmount"><span>Crypto: </span></p>
-            <p class="market-info__marketsAmount"><span>Markets: </span>15512</p>
-            <p class="market-info__marketCap"><span>Market Cap: </span>$203375924397</p>
-            <p class="market-info__dailyVolume"><span>24h Volume: </span>$10250728401</p>
+            <p class="market-info__activeCrypto">Active Crypto: <span class="market-info__activeCrypto--data"></span></p>
+            <p class="market-info__marketCap">Market Cap: <span class="market-info__marketCap--data"></span></p>
+            <p class="market-info__volume24h">Volume 24h: <span class="market-info__volume24h--data"></span></p>
         </div>
         <nav class="nav-main nav-primary">
             <div class="nav__home">
@@ -52,19 +51,17 @@
         
             <table class="table table-dark table-striped">
                     <thead>
-                        
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Coin</th>
+                        <th scope="col"></th>
+                        <th scope="col">Symbol</th>
                         <th scope="col">Market Cap</th>
                         <th scope="col">Price</th>
-
                         <th scope="col">1H</th>
                         <th scope="col">24H</th>
                         <th scope="col">7D</th>
-                        <th scope="col">Change</th>
+                        <th scope="col">Volume (24h)</th>
                       </tr>
-                      
                     </thead>
                     
                     <tbody class="table-content">
