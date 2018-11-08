@@ -121,7 +121,9 @@ body {
           display: none; }
         body .container-fluid .table .logoNameCoin {
           width: 150px;
-          text-align: center; } }
+          text-align: center; }
+          body .container-fluid .table .logoNameCoin p {
+            width: 100px; } }
       @media screen and (max-width: 715px) {
         body .container-fluid .table .coinMarketCap, body .container-fluid .table .marketCap-column {
           display: none; } }
