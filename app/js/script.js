@@ -1,3 +1,5 @@
+let allCoins = [];
+
 UIController = (function(){
 
     const DOMstrings = {
@@ -5,8 +7,10 @@ UIController = (function(){
         marketCap: '.market-info__marketCap--data',
         marketVolume24h: '.market-info__volume24h--data',
         navPrimary: '.nav-primary',
+        searchInput: '.findCoinName',
         navSecondary: '.nav-secondary',
         navHamburgerBtn: '.nav-hamburger',
+        rowCoin: '.row-coin',
         logoNameCoin: '.logoNameCoin',
         coinFavouriteBtn: '.addCoinFavourite',
         coinSymbol: '.coinSymbol',
@@ -18,17 +22,7 @@ UIController = (function(){
         coinDailyVolume: '.coinDailyVolume'
     };
 
-    // const addCoinToFavourites = () => {
-    //     let DOM = UIController.getDOMStrings();
-    //     let favouriteBtn = document.querySelector(DOM.getDOMStrings.coinFavouriteBtn);
-    //     favouriteBtn
-    // }
-
     return{
-        navHambBtnClick: function() {
-            console.log('chuj');
-        },
-
         getDOMStrings: function(){
             return DOMstrings;
         }
@@ -37,6 +31,8 @@ UIController = (function(){
 })();
 
 const controller = (function(UIController){
+
+    
 
     const getCurrencyLogo = () =>{
         $.ajax({
@@ -91,6 +87,7 @@ const controller = (function(UIController){
             arrOne.forEach((item,index) => {
                 let row = document.createElement('tr');
                 row.className = 'row-coin';
+                row.setAttribute("id", index);
                 let secondApiArrayIndex = index;
     
                
@@ -120,20 +117,39 @@ const controller = (function(UIController){
     
                 
             });
-    
             
         }
     }
 
-    const setupEventListeners = () => {
-        let DOM = UIController.getDOMStrings();
+    const searchCoin = () => {
+        var td;
+        var input = document.querySelector('.findCoinInput');
         
-        document.querySelector(DOM.navHamburgerBtn).addEventListener('click', function(){
-            $(DOM.navSecondary).toggle();
-        });
+        var filter = input.value.toUpperCase();
 
+        var table = document.getElementsByClassName('table-content');
+        
+        var tr = document.getElementsByClassName('row-coin');
+        
 
+        for(var i =0; i<tr.length; i++){
+            td = tr[i].getElementsByTagName('p')[0].childNodes[0].nodeValue;
+            if(td) {
+                if(td.toUpperCase().indexOf(filter) > -1){
+                    tr[i].style.display = "";
+                } else{
+                    tr[i].style.display = "none";
+                }
+            }
+        }
     }
+
+
+    const eventListenerHandler = () => {
+        document.querySelector('.findCoinInput').addEventListener('keyup',searchCoin);
+    }
+
+    
 
     const getMarketInfo = () => {
         $.ajax({
@@ -155,7 +171,7 @@ const controller = (function(UIController){
 
     return{
         init: function(){
-            setupEventListeners();
+            eventListenerHandler();
             getMarketInfo();
             getCurrencyLogo();
             getCurrencyList();
@@ -168,6 +184,7 @@ const controller = (function(UIController){
 
 })(UIController);
 
-controller.init();
 
+
+controller.init();
 
