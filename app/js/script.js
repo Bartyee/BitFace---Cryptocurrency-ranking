@@ -1,5 +1,6 @@
 let allCoins = [];
 
+
 UIController = (function(){
 
     const DOMstrings = {
@@ -35,6 +36,7 @@ const controller = (function(UIController){
     
 
     const getCurrencyLogo = () =>{
+        let proxy = 'https://cors-anywhere.herokuapp.com/';
         $.ajax({
             url: 'https://chasing-coins.com/api/v1/std/logo/BTC'
         })
@@ -48,11 +50,12 @@ const controller = (function(UIController){
     }
     
     const getCurrencyList = () => {
+        let proxy = 'https://cors-anywhere.herokuapp.com/';
         let firstApi_dataArray = [];
         let secondApi_dataArray = [];
      
         $.ajax({
-            url: 'https://chasing-coins.com/api/v1/top-coins/200',
+            url: proxy + 'https://chasing-coins.com/api/v1/top-coins/200',
             dataType: 'json',
             type: 'get',
      
@@ -64,13 +67,14 @@ const controller = (function(UIController){
         });
      
         const getSecondData = () => {
+            let proxy = 'https://cors-anywhere.herokuapp.com/';
             $.ajax({
-                url: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
+                url: proxy + 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
                 dataType: 'json',
                 type: 'get',
                 
                 headers:{
-                    'Access-Control-Allow-Origin': null,
+                    'Access-Control-Allow-Origin': proxy + 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
                     'X-CMC_PRO_API_KEY': '90a88319-e5af-4f4b-9307-8c1bec2000b7',
                     'CMC_PRO_API_KEY': '90a88319-e5af-4f4b-9307-8c1bec2000b7'
                 }
@@ -153,8 +157,9 @@ const controller = (function(UIController){
     
 
     const getMarketInfo = () => {
+        let proxy = 'https://cors-anywhere.herokuapp.com/';
         $.ajax({
-            url: 'https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest',
+            url: proxy + 'https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest',
                 dataType: 'json',
                 type: 'get',
                 
