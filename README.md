@@ -13,8 +13,11 @@
   
 ### DEMO
 <a href="https://bartyee.github.io/BitFace---Cryptocurrency-ranking/app/">DEMO</a>
-<span style="color:orange;">Unfortunately, but to use this application you must use CORSE bypass, because API's have problems with Access-Control-Allow-Origin</span>
+<span style="color:orange;">Unfortunately, but to use this application you must use CORSE bypass, because API's have problems with Access-Control-Allow-Origin.</span>
+<br>
 <a href="https://addons.mozilla.org/pl/firefox/addon/cors-everywhere/">Firefox</a>, <a href="https://addons.opera.com/pl/extensions/details/cors-toggle/">Opera</a>, <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi">Chrome</a>
+<h3 align="center">If you downloaded CORSE plugin for browser, just turn ON this and refresh site :) ! </h3>
+<br>
 I'm very sorry for that :( 
 
 ### Installing
