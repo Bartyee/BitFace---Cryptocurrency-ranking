@@ -10,6 +10,13 @@
 <p>The project was created mainly using <a href="https://gulpjs.com/">Gulp</a>, <a href="https://developer.mozilla.org/pl/docs/Web/JavaScript">JavaScript ES6</a>, <a href="https://jquery.com/">jQuery</a>, <a href="https://sass-lang.com/">SASS</a>.
 <br>
 <br>
+<p>In the future:</p>
+<ul>
+  <li>Add coin to favourite list</li>
+  <li>Additional list ICO</li>
+  <li>Calculator for coin</li>
+  <li>Better performance, quality of app</li>
+</ul>
   
 ### DEMO
 <a href="https://bartyee.github.io/BitFace---Cryptocurrency-ranking/app/">DEMO</a>
