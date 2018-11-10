@@ -21,6 +21,7 @@
 ### DEMO
 <div align="center">
 <a href="https://bartyee.github.io/BitFace---Cryptocurrency-ranking/app/">DEMO</a>
+<br>
 <strike><span style="color:orange;">Unfortunately, but to use this application you must use CORSE bypass, because API's have problems with Access-Control-Allow-Origin.</span>
 <h3>If you have already unlocked CORSE before, you do not have to do that!!!</h3>
 <br>
