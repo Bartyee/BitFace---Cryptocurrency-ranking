@@ -13,7 +13,7 @@
   
 ### Installing
 
-If you want check project
+If you want check my project:
 ```
 git clone https://github.com/Bartyee/BitFace---Cryptocurrency-ranking/
 npm install 
