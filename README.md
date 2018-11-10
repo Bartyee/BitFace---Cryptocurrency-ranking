@@ -12,7 +12,11 @@
 <br>
   
 ### DEMO
-<p style="color: red">Unfortunately, but to use this application you must use</p>
+<a href="https://bartyee.github.io/BitFace---Cryptocurrency-ranking/app/">DEMO</a>
+<span style="color:orange;">Unfortunately, but to use this application you must use CORSE bypass, because API's have problems with Access-Control-Allow-Origin</span>
+<a href="https://addons.mozilla.org/pl/firefox/addon/cors-everywhere/">Firefox</a>, <a href="https://addons.opera.com/pl/extensions/details/cors-toggle/">Opera</a>, <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi">Chrome</a>
+I'm very sorry for that :( 
+
 ### Installing
 
 If you want check my project:
