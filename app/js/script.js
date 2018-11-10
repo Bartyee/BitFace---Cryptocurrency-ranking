@@ -70,6 +70,7 @@ const controller = (function(UIController){
                 type: 'get',
                 
                 headers:{
+                    'Access-Control-Allow-Origin': null,
                     'X-CMC_PRO_API_KEY': '90a88319-e5af-4f4b-9307-8c1bec2000b7',
                     'CMC_PRO_API_KEY': '90a88319-e5af-4f4b-9307-8c1bec2000b7'
                 }
@@ -122,17 +123,17 @@ const controller = (function(UIController){
     }
 
     const searchCoin = () => {
-        var td;
-        var input = document.querySelector('.findCoinInput');
+        let td;
+        let input = document.querySelector('.findCoinInput');
         
-        var filter = input.value.toUpperCase();
+        let filter = input.value.toUpperCase();
 
-        var table = document.getElementsByClassName('table-content');
+        let table = document.getElementsByClassName('table-content');
         
-        var tr = document.getElementsByClassName('row-coin');
+        let tr = document.getElementsByClassName('row-coin');
         
 
-        for(var i =0; i<tr.length; i++){
+        for(let i =0; i<tr.length; i++){
             td = tr[i].getElementsByTagName('p')[0].childNodes[0].nodeValue;
             if(td) {
                 if(td.toUpperCase().indexOf(filter) > -1){
@@ -162,7 +163,7 @@ const controller = (function(UIController){
                 'CMC_PRO_API_KEY': '90a88319-e5af-4f4b-9307-8c1bec2000b7'
             }
         }).done(res =>{
-            var DOM = UIController.getDOMStrings();
+            let DOM = UIController.getDOMStrings();
             document.querySelector(DOM.activeCrypto).innerHTML = res.data.active_cryptocurrencies;
             document.querySelector(DOM.marketCap).innerHTML = '$' + numberRound(res.data.quote.USD.total_market_cap);
             document.querySelector(DOM.marketVolume24h).innerHTML = '$' + numberRound(res.data.quote.USD.total_volume_24h);
