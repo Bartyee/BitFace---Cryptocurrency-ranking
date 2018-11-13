@@ -1,14 +1,13 @@
-let allCoins = [];
-
-
 UIController = (function(){
 
-    const DOMstrings = {
+    
+
+    let DOMstrings = {
         activeCrypto: '.market-info__activeCrypto--data',
         marketCap: '.market-info__marketCap--data',
         marketVolume24h: '.market-info__volume24h--data',
         navPrimary: '.nav-primary',
-        searchInput: '.findCoinName',
+        searchInput: '.findCoinInput',
         navSecondary: '.nav-secondary',
         navHamburgerBtn: '.nav-hamburger',
         rowCoin: '.row-coin',
@@ -20,7 +19,8 @@ UIController = (function(){
         coinHourChange: '.coinHourChange',
         coinDayChange: '.coinDayChange',
         coinWeekChange: '.coinWeekChange',
-        coinDailyVolume: '.coinDailyVolume'
+        coinDailyVolume: '.coinDailyVolume',
+        renderDone: false,
     };
 
     return{
@@ -32,11 +32,10 @@ UIController = (function(){
 })();
 
 const controller = (function(UIController){
-
     
 
     const getCurrencyLogo = () =>{
-        let proxy = 'https://cors-anywhere.herokuapp.com/';
+        
         $.ajax({
             url: 'https://chasing-coins.com/api/v1/std/logo/BTC'
         })
@@ -63,7 +62,6 @@ const controller = (function(UIController){
             firstApi_dataArray = Object.values(res)
             firstApi_dataArray.splice(100);
             getSecondData();
-     
         });
      
         const getSecondData = () => {
@@ -81,24 +79,23 @@ const controller = (function(UIController){
             }).done(res =>{
                 secondApi_dataArray = Object.values(res.data);
                 buildDOMCurrencyList(firstApi_dataArray, secondApi_dataArray);
-    
-                
             })
         }
     
         
-        const buildDOMCurrencyList = (arrOne,arrTwo) =>{
+        const buildDOMCurrencyList = (arrOne,arrTwo) =>{ //Two API arrays
+
+            let favouriteCoinList = [];
     
-            arrOne.forEach((item,index) => {
+            arrOne.forEach((item,index) => { //get arrOne items and from arrTwo
                 let row = document.createElement('tr');
                 row.className = 'row-coin';
                 row.setAttribute("id", index);
                 let secondApiArrayIndex = index;
-    
-               
+                
                 row.innerHTML = `
                     <th scope='row'>${index}</th>
-                    <td class="logoNameCoin"><img width='25px' class="logoCoin" src='https://chasing-coins.com/api/v1/std/logo/${item.symbol}'/> <a href="${item.url}"><p class="nameCoin">${secondApi_dataArray[secondApiArrayIndex].name}</p></a><button class="addCoinFavourite"></button></td>
+                    <td class="logoNameCoin"><img width='25px' class="logoCoin" src='https://chasing-coins.com/api/v1/std/logo/${item.symbol}'/> <a href="${item.url}"><p class="nameCoin">${arrTwo[secondApiArrayIndex].name}</p></a><button class="addCoinFavourite"></button></td>
                     <td class="coinSymbol"><p>${item.symbol}</p></td>
                     <td class="coinMarketCap"><p>$ ${numberRound(item.cap)} </p></td>
                     <td class="coinPrice"><p>$ ${parseFloat(Math.round(item.price * 100) / 100).toFixed(2)}</p></td>
@@ -107,22 +104,44 @@ const controller = (function(UIController){
                     <td class="coinWeekChange">
                     <p>
                         ${
-                            secondApi_dataArray[secondApiArrayIndex].quote.USD.percent_change_7d > 0 ? '<span style="color: #43D64E;">' + '+' + parseFloat(Math.round(secondApi_dataArray[secondApiArrayIndex].quote.USD.percent_change_7d * 100) / 100).toFixed(2) + ' %' + '</span>' : '<span style="color: #ff0000;">' + parseFloat(Math.round(secondApi_dataArray[secondApiArrayIndex].quote.USD.percent_change_7d * 100) / 100).toFixed(2) + ' %' + '</span>'
+                            arrTwo[secondApiArrayIndex].quote.USD.percent_change_7d > 0 ? '<span style="color: #43D64E;">' + '+' + parseFloat(Math.round(arrTwo[secondApiArrayIndex].quote.USD.percent_change_7d * 100) / 100).toFixed(2) + ' %' + '</span>' : '<span style="color: #ff0000;">' + parseFloat(Math.round(arrTwo[secondApiArrayIndex].quote.USD.percent_change_7d * 100) / 100).toFixed(2) + ' %' + '</span>'
                         }
                     </p>
                     </td>
                     <td class="coinDailyVolume">
                     <p>
-                        ${numberRound(secondApi_dataArray[secondApiArrayIndex].quote.USD.volume_24h) + ' ' + secondApi_dataArray[secondApiArrayIndex].symbol}
+                        ${numberRound(arrTwo[secondApiArrayIndex].quote.USD.volume_24h) + ' ' + arrTwo[secondApiArrayIndex].symbol}
                     </p>
                     </td>
                 `
                     document.querySelector('.loading').style.display = 'none';
                     document.querySelector('.table-content').appendChild(row);
-    
-                
+
+                    
+                    if (index == arrOne.length - 1){ //sprawdzam czy zakończono render wszystkich elementów z API
+                        
+                        let items = document.getElementsByClassName('addCoinFavourite'); // porbranie list elementów gdzie znajdują się buttony
+
+
+                        for(let i = 0; i<items.length; i++){ 
+                            items[i].addEventListener('click', function(){ //przypisanie do każdego elementu funkcji click
+                                let index = this.parentNode.parentNode.id;
+                                if(favouriteCoinList.includes(items[i].parentNode.parentNode))
+                                {
+                                    $(this).toggleClass("addCoinFavourite-green")
+                                    favouriteCoinList.splice(index,1)
+                                    console.log(favouriteCoinList)
+                                }
+                                else{
+                                    $(this).toggleClass("addCoinFavourite-green")
+                                    console.log(favouriteCoinList.push(this.parentNode.parentNode));
+                                    console.log(favouriteCoinList);
+                                }
+                                console.log(index);
+                            });
+                        }
+                    }
             });
-            
         }
     }
 
@@ -131,8 +150,6 @@ const controller = (function(UIController){
         let input = document.querySelector('.findCoinInput');
         
         let filter = input.value.toUpperCase();
-
-        let table = document.getElementsByClassName('table-content');
         
         let tr = document.getElementsByClassName('row-coin');
         
@@ -149,9 +166,13 @@ const controller = (function(UIController){
         }
     }
 
+    const findCoinInput = () => {
+        let DOM = UIController.getDOMStrings();
+        document.querySelector(DOM.searchInput).addEventListener('keyup',searchCoin);
+    }
 
-    const eventListenerHandler = () => {
-        document.querySelector('.findCoinInput').addEventListener('keyup',searchCoin);
+    const remove = (array,element) => {
+        return array.filter(e => e !== element)
     }
 
     
@@ -177,7 +198,7 @@ const controller = (function(UIController){
 
     return{
         init: function(){
-            eventListenerHandler();
+            findCoinInput();
             getMarketInfo();
             getCurrencyLogo();
             getCurrencyList();

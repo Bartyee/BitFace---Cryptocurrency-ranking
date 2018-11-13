@@ -113,6 +113,8 @@ body {
             transition: 0.3s; }
             body .container-fluid .table .table-content .row-coin .logoNameCoin .addCoinFavourite:hover {
               background-color: #43D64E; }
+          body .container-fluid .table .table-content .row-coin .logoNameCoin .addCoinFavourite-green {
+            background-color: #43D64E; }
       @media screen and (max-width: 1030px) {
         body .container-fluid .table .volume24h-column, body .container-fluid .table .coinDailyVolume {
           display: none; } }
