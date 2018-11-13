@@ -85,6 +85,8 @@ const controller = (function(UIController){
         
         const buildDOMCurrencyList = (arrOne,arrTwo) =>{ //Two API arrays
 
+            let renderDom = false;
+
             let favouriteCoinList = [];
     
             arrOne.forEach((item,index) => { //get arrOne items and from arrTwo
@@ -117,31 +119,58 @@ const controller = (function(UIController){
                     document.querySelector('.loading').style.display = 'none';
                     document.querySelector('.table-content').appendChild(row);
 
-                    
-                    if (index == arrOne.length - 1){ //sprawdzam czy zakończono render wszystkich elementów z API
-                        
-                        let items = document.getElementsByClassName('addCoinFavourite'); // porbranie list elementów gdzie znajdują się buttony
 
-
-                        for(let i = 0; i<items.length; i++){ 
-                            items[i].addEventListener('click', function(){ //przypisanie do każdego elementu funkcji click
-                                let index = this.parentNode.parentNode.id;
-                                if(favouriteCoinList.includes(items[i].parentNode.parentNode))
-                                {
-                                    $(this).toggleClass("addCoinFavourite-green")
-                                    favouriteCoinList.splice(index,1)
-                                    console.log(favouriteCoinList)
-                                }
-                                else{
-                                    $(this).toggleClass("addCoinFavourite-green")
-                                    console.log(favouriteCoinList.push(this.parentNode.parentNode));
-                                    console.log(favouriteCoinList);
-                                }
-                                console.log(index);
-                            });
-                        }
+                    if(index == arrOne.length - 1){
+                        renderDom = true;
                     }
+
+                    
+                    // if (index == arrOne.length - 1){ //sprawdzam czy zakończono render wszystkich elementów z API
+                        
+                    //     let items = document.getElementsByClassName('addCoinFavourite'); // porbranie list elementów gdzie znajdują się buttony
+
+
+                    //     for(let i = 0; i<items.length; i++){ 
+                    //         items[i].addEventListener('click', function(){ //przypisanie do każdego elementu funkcji click
+                    //             let index = this.parentNode.parentNode.id;
+                    //             if(favouriteCoinList.includes(items[i].parentNode.parentNode))
+                    //             {
+                    //                 $(this).toggleClass("addCoinFavourite-green")
+                    //                 favouriteCoinList.splice(index,1)
+                    //                 console.log(favouriteCoinList)
+                    //             }
+                    //             else{
+                    //                 $(this).toggleClass("addCoinFavourite-green")
+                    //                 console.log(favouriteCoinList.push(this.parentNode.parentNode));
+                    //                 console.log(favouriteCoinList);
+                    //             }
+                    //             console.log(index);
+                    //         });
+                    //     }
+                    // }
             });
+
+            if(renderDom == true){
+                var items = document.getElementsByClassName('addCoinFavourite');
+                console.log(items);
+
+                for(let i = 0; i<items.length; i++){
+                    items[i].addEventListener('click', function(){
+                        console.log('click');
+                        let index = this.parentNode.parentNode.id;
+                        if(favouriteCoinList.includes(items[i].parentNode.parentNode)){
+                            $(items[i]).toggleClass("addCoinFavourite-green");
+                            favouriteCoinList.splice(index,1)
+                            console.log(favouriteCoinList)
+                        }
+                        else{
+                            $(items[i]).toggleClass("addCoinFavourite-green")
+                            console.log(favouriteCoinList.push(this.parentNode.parentNode));
+                            console.log(favouriteCoinList);
+                        }
+                    })
+                }
+            }
         }
     }
 
