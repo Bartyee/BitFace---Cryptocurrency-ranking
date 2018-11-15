@@ -70,7 +70,9 @@ body {
           body .container-fluid .nav-primary .nav__tools a:hover {
             color: #43D64E; }
         body .container-fluid .nav-primary .nav__tools .nav__tools--item {
-          margin: 0 15px; }
+          margin: 0 15px;
+          display: flex;
+          align-items: center; }
       body .container-fluid .nav-primary .nav-hamburger {
         margin-right: 10px;
         display: none;
