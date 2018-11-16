@@ -110,10 +110,22 @@ const controller = (function(UIController){
                     row.className = 'row-coin';
                     row.setAttribute("id", index);
                     let secondApiArrayIndex = index;
+
+                    const checkIfElementIsInLocalStorage = (index) => {
+                        if(localStorage.getItem(index) != null){
+                            row.className += " checked";
+                            $(row.children[1].children[2]).addClass("addCoinFavourite-checked");
+                        }
+                        else{
+                            return "";
+                        }
+                    }
+
+                    
                     
                     row.innerHTML = `
                         <th scope='row'>${index+1}</th>
-                        <td class="logoNameCoin"><img width='25px' class="logoCoin" src='https://chasing-coins.com/api/v1/std/logo/${item.symbol}'/> <a href="${item.url}"><p class="nameCoin">${arrTwo[secondApiArrayIndex].name}</p></a><button class="addCoinFavourite"></button></td>
+                <td class="logoNameCoin"><img width='25px' class="logoCoin" src='https://chasing-coins.com/api/v1/std/logo/${item.symbol}'/> <a href="${item.url}"><p class="nameCoin">${arrTwo[secondApiArrayIndex].name}</p></a><button class="addCoinFavourite"></button></td>
                         <td class="coinSymbol"><p>${item.symbol}</p></td>
                         <td class="coinMarketCap"><p>$ ${numberRound(item.cap)} </p></td>
                         <td class="coinPrice"><p>$ ${parseFloat(Math.round(item.price * 100) / 100).toFixed(2)}</p></td>
@@ -134,6 +146,8 @@ const controller = (function(UIController){
                     `
                         document.querySelector('.loading').style.display = 'none';
                         document.querySelector('.table-content').appendChild(row);
+
+                        checkIfElementIsInLocalStorage(index);
     
     
                         if(index == arrOne.length - 1){
@@ -142,6 +156,7 @@ const controller = (function(UIController){
                 });
              
             if(renderDom == true){
+                addCoinToFavourite();
                 let buttonArray = [...document.getElementsByClassName('addCoinFavourite')];
 
                 buttonArray.forEach((item) => {
@@ -151,7 +166,7 @@ const controller = (function(UIController){
                         
                         
                         if(favouriteArray.includes(item.parentElement.parentElement)){
-                            $(item).toggleClass('addCoinFavourite-green');
+                            $(item).toggleClass('addCoinFavourite-checked');
                             if(index > -1){
                                 favouriteArray.splice(index, 1);
                                 console.log(favouriteArray);
@@ -162,12 +177,14 @@ const controller = (function(UIController){
                         else{
                             console.log('Id dodanego rowa ' + item.parentElement.parentElement.id);
                             favouriteArray.push(item.parentElement.parentElement);
-                            $(item).toggleClass('addCoinFavourite-green');
+                            $(item).toggleClass('addCoinFavourite-checked');
                             console.log(favouriteArray);
                         }
 
                     })
                 })
+
+                favouriteListClick();
             }
 
             
@@ -199,6 +216,45 @@ const controller = (function(UIController){
         let DOM = UIController.getDOMStrings();
         document.querySelector(DOM.searchInput).addEventListener('keyup',searchCoin);
     }
+
+    const addCoinToFavourite = () => {
+        var btn = document.querySelectorAll(".addCoinFavourite");
+
+        for(let i=0; i<btn.length; i++){
+            btn[i].addEventListener("click",function(){
+                $(btn[i].parentElement.parentElement).toggleClass("checked");
+                $(btn[i]).addClass("checked");
+                if(localStorage.getItem(btn[i].parentElement.parentElement.id) == null){
+                    localStorage.setItem(btn[i].parentElement.parentElement.id,'checked');
+                    
+                }
+                else if(localStorage.getItem(btn[i].parentElement.parentElement.id) != null){
+                    localStorage.removeItem(btn[i].parentElement.parentElement.id);
+                }
+                
+                
+            })
+        } 
+    }
+
+    const favouriteListClick = () => {
+        let favouriteTab = document.querySelector('.nav__tools--favourites');
+        let rowCoin = document.querySelectorAll('.row-coin');
+        let tableContent = document.querySelector('.table-content').children;
+
+        favouriteTab.addEventListener("click",function(){
+            $(tableContent).toggle();
+            for(let i=0; i<=rowCoin.length; i++){
+                if($(rowCoin[i]).hasClass("checked")){
+                    $(rowCoin[i]).show();
+                }
+            }
+        })
+    }
+
+    
+
+    
 
     return{
         init: function(){

@@ -170,9 +170,17 @@ body{
                 .row-coin{
                     text-align: center;
 
+
+                    
+
                     .logoNameCoin{
                         display: flex;
                         align-items: center;
+
+                        .checked{
+                            background-color: red;
+                        }
+                        
                         
 
                         .logoCoin{
@@ -205,7 +213,7 @@ body{
                             
                         }
 
-                        .addCoinFavourite-green{
+                        .addCoinFavourite-checked{
                             background-color: $primary-color;
                         }
                     }
