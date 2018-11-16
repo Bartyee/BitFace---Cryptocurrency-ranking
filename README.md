@@ -12,9 +12,10 @@
 <br>
 <p>In the future:</p>
 <ul>
-  <li>Add coin to favourite list</li>
+  <strike><li>Add coin to favourite list</li></strike>
   <li>Additional list ICO</li>
   <li>Calculator for coin</li>
+  <li>New designe!</li>
   <li>Better performance, quality of app</li>
 </ul>
   
