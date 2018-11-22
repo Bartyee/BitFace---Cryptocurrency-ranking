@@ -13,9 +13,11 @@
 <p>In the future:</p>
 <ul>
   <strike><li>Add coin to favourite list</li></strike>
+  <strike><li>Convert to BTC prices</li></strike>
   <li>Additional list ICO</li>
   <li>Calculator for coin</li>
   <li>New designe!</li>
+  <li>Fix RWD for all devices</li>
   <li>Better performance, quality of app</li>
 </ul>
   
