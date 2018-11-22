@@ -50,18 +50,11 @@ const controller = (function(UIController){
         })
     }
     
-    const getCurrencyLogo = () =>{
-        
-        $.ajax({
-            url: 'https://chasing-coins.com/api/v1/std/logo/BTC'
-        })
-    }
+    
     
     const numberRound = data => {
-    
         let convert = Math.round(data).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
         return convert
-    
     }
     
     const getCurrencyList = () => {
@@ -103,9 +96,16 @@ const controller = (function(UIController){
 
             let favouriteArray = []; // Array with favourite Coins
 
+            let bitcoinPrice;
+            let ethereumPrice;
+
+            
+
             let renderDom = false;
 
                 arrOne.forEach((item,index) => { //get arrOne items and from arrTwo
+                    btcPrice = arrOne[0].price; //Bitcoin is always on 1st place
+                    ethPrice = arrOne[2].price; //Ethereum place, now its 3 :P 
                     let row = document.createElement('tr');
                     row.className = 'row-coin';
                     row.setAttribute("id", index);
@@ -125,16 +125,16 @@ const controller = (function(UIController){
                     
                     row.innerHTML = `
                         <th scope='row'>${index+1}</th>
-                <td class="logoNameCoin"><img width='25px' class="logoCoin" src='https://chasing-coins.com/api/v1/std/logo/${item.symbol}'/> <a href="${item.url}"><p class="nameCoin">${arrTwo[secondApiArrayIndex].name}</p></a><button class="addCoinFavourite"></button></td>
+                <td class="logoNameAndCoin"><img width='25px' class="logoCoin" src='https://chasing-coins.com/api/v1/std/logo/${item.symbol}'/> <a href="${item.url}"><p class="nameCoin">${arrTwo[secondApiArrayIndex].name}</p></a><button class="addCoinFavourite"></button></td>
                         <td class="coinSymbol"><p>${item.symbol}</p></td>
                         <td class="coinMarketCap"><p>$ ${numberRound(item.cap)} </p></td>
-                        <td class="coinPrice"><p>$ ${parseFloat(Math.round(item.price * 100) / 100).toFixed(2)}</p></td>
-                        <td class="coinHourChange"><p>${item.change.hour > 0 ? '<span style="color: #43D64E;">' + "+" + item.change.hour + ' %' + '</span>' : '<span style="color: #ff0000;">' + item.change.hour + ' %'}</span></p></td>
-                        <td class="coinDayChange"><p>${item.change.day > 0 ? '<span style="color: #43D64E;">' + "+" + item.change.day + ' %' + '</span>' : '<span style="color: #ff0000;">' + item.change.day + ' %'}</span</p></td>
+                        <td class="coinPrice"><p>$ ${item.price.charAt(0) == '0' ? parseFloat(item.price * 100 / 100).toFixed(4).replace(",", ".") : parseFloat(item.price * 100 / 100).toFixed(2).replace(",", ".")} </p></td>
+                        <td class="coinHourChange"><p>${item.change.hour > 0 ? '<span class="changeProfitColor" style="color: #43D64E;">' + "+" + item.change.hour + ' %' + '</span>' : '<span class="changeLossColor" style="color: #ff0000;">' + item.change.hour + ' %'}</span></p></td>
+                        <td class="coinDayChange"><p>${item.change.day > 0 ? '<span class="changeProfitColor" style="color: #43D64E;">' + "+" + item.change.day + ' %' + '</span>' : '<span class="changeLossColor" style="color: #ff0000;">' + item.change.day + ' %'}</span</p></td>
                         <td class="coinWeekChange">
                         <p>
                             ${
-                                arrTwo[secondApiArrayIndex].quote.USD.percent_change_7d > 0 ? '<span style="color: #43D64E;">' + '+' + parseFloat(Math.round(arrTwo[secondApiArrayIndex].quote.USD.percent_change_7d * 100) / 100).toFixed(2) + ' %' + '</span>' : '<span style="color: #ff0000;">' + parseFloat(Math.round(arrTwo[secondApiArrayIndex].quote.USD.percent_change_7d * 100) / 100).toFixed(2) + ' %' + '</span>'
+                                arrTwo[secondApiArrayIndex].quote.USD.percent_change_7d > 0 ? '<span class="changeProfitColor" style="color: #43D64E;">' + '+' + parseFloat(Math.round(arrTwo[secondApiArrayIndex].quote.USD.percent_change_7d * 100) / 100).toFixed(2) + ' %' + '</span>' : '<span class="changeLossColor" style="color: #ff0000;">' + parseFloat(Math.round(arrTwo[secondApiArrayIndex].quote.USD.percent_change_7d * 100) / 100).toFixed(2) + ' %' + '</span>'
                             }
                         </p>
                         </td>
@@ -145,13 +145,12 @@ const controller = (function(UIController){
                         </td>
                     `
                         document.querySelector('.loading').style.display = 'none';
-                        document.querySelector('.table-content').appendChild(row);
+                        document.querySelector('.table-data').appendChild(row);
 
                         checkIfElementIsInLocalStorage(index);
-    
-    
+
                         if(index == arrOne.length - 1){
-                            renderDom = true;
+                            renderDom = true;                
                         }
                 });
              
@@ -185,6 +184,7 @@ const controller = (function(UIController){
                 })
 
                 favouriteListClick();
+                convertPrice();
             }
 
             
@@ -240,7 +240,7 @@ const controller = (function(UIController){
     const favouriteListClick = () => {
         let favouriteTab = document.querySelector('.nav__tools--favourites');
         let rowCoin = document.querySelectorAll('.row-coin');
-        let tableContent = document.querySelector('.table-content').children;
+        let tableContent = document.querySelector('.table-data').children;
 
         favouriteTab.addEventListener("click",function(){
             $(tableContent).toggle();
@@ -252,6 +252,88 @@ const controller = (function(UIController){
         })
     }
 
+    const convertPrice = () => {
+        let selectInput = document.querySelector(".custom-select");
+        $(selectInput).show();
+        let prices = document.getElementsByClassName("coinPrice");
+        let coinMarketCap = document.getElementsByClassName("coinMarketCap");
+        let volumePrice = document.getElementsByClassName("coinDailyVolume");
+
+        let usdPrice = [];
+        let coinMarketCapUsdPrice = [];
+        let volumeUsdPrice = []; //USD Price array for actually prices on site. Need for toggle USD To BTC and back. 
+        let btcPrice; //bitcoin Price from localStorage, if not exist or other than this variable ajax api call function and save this in localstorage.
+
+        const saveActuallyUsdPrice = () => {
+            for(let i=0; i<prices.length; i++){
+                usdPrice[i] = prices[i].textContent;
+                coinMarketCapUsdPrice[i] = coinMarketCap[i].textContent;
+                volumeUsdPrice[i] = volumePrice[i].textContent;
+            }
+        }
+
+        saveActuallyUsdPrice();
+
+        
+
+        let proxy = 'https://cors-anywhere.herokuapp.com/';
+
+        if(localStorage.getItem("btcPrice") == null || localStorage.getItem("btcPrice") != btcPrice)
+        {
+            $.ajax({
+                url: proxy + 'https://chasing-coins.com/api/v1/convert/USD/BTC',
+                dataType: 'json',
+                type: 'get',
+            }).done(res => {
+                btcPrice = res.result;
+                localStorage.setItem("btcPrice",btcPrice);
+            })
+        }
+
+        selectInput.addEventListener('change',function(){
+                if(this.value == "1"){
+                    for(let i=0; i<prices.length; i++){
+                        prices[i].style.color = "";
+                        prices[i].textContent = usdPrice[i];
+                        coinMarketCap[i].style.color = "";
+                        coinMarketCap[i].textContent = coinMarketCapUsdPrice[i];
+                    }
+                }
+                else if(this.value == "2"){
+                    for(let i=0; i<prices.length; i++){
+                        prices[i].style.color = "#E38215";
+                        if(i==0){
+                            prices[i].textContent = "$ 1.00";
+                        }
+                        else{
+                            prices[i].textContent = prices[i].textContent.replace(/\$/g,'');
+                            let text = prices[i].textContent;
+                            let convert = parseFloat(text);
+                            prices[i].textContent = '$ ' + (convert * btcPrice).toFixed(8).toString();
+                            
+                        }
+                    }
+                    for(let i=0; i<coinMarketCap.length; i++){
+                        coinMarketCap[i].style.color = "#E38215";
+                        
+                        if(i==0){
+                            coinMarketCap[i].textContent = coinMarketCap[i].textContent.replace(/\$/g,'').replace(/\s/g,'');
+                            let text = coinMarketCap[i].textContent;
+                            let convert = parseFloat(text);
+                            coinMarketCap[i].textContent = '$ ' + parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                            
+                        }
+                        else{
+                            
+                            coinMarketCap[i].textContent = coinMarketCap[i].textContent.replace(/\$/g,'').replace(/\s/g,'');
+                            let text = coinMarketCap[i].textContent;
+                            let convert = parseFloat(text);
+                            coinMarketCap[i].textContent = '$ ' + parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                        }
+                    }
+                }
+        })
+    }
     
 
     
@@ -260,7 +342,6 @@ const controller = (function(UIController){
         init: function(){
             findCoinInput();
             getMarketInfo();
-            getCurrencyLogo();
             getCurrencyList();
             console.log('Application has started');
         }

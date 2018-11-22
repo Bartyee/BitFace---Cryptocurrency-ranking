@@ -11,6 +11,7 @@
   "devDependencies": {
     "axios": "^0.18.0",
     "babel-minify": "^0.5.0",
+    "bootstrap-table": "^1.12.1",
     "browser-sync": "^2.26.3",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
@@ -23,6 +24,7 @@
     "gulp-useref": "^3.1.6",
     "gulp-util": "^3.0.8",
     "install": "^0.12.2",
+    "moment": "^2.22.2",
     "npm": "^6.4.1",
     "run-sequence": "^2.2.1"
   }

@@ -7,13 +7,34 @@
     <title>BitFace - Cryptocurrency Ranking</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet"> 
+
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+
+    
+    
+    
+    
+    
+
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/styles.css" />
     
 </head>
 <body>
-    
+    <header class="header">
+        <div class="header__home">
+            <img class="header-logo" alt="logo" src="./images/logo.png">
+            <h1 class="header__pageName"><a href="#">.BitFace <span class="pageName-betaText">beta</span></a></h1>
+        </div>
+        
+    </header>
     <div class="container-fluid">
         <div class="loading">
             <img src="./images/spinner-loading.svg" />
@@ -27,7 +48,7 @@
             <div class="nav__home">
                 <a href="/">
                     <img class="nav-logo" src="./images/logo.png" alt="logo" />
-                    <p>BitFace</p>
+                    <p class="siteName">BitFace</p>
                 </a>
             </div>
 
@@ -42,29 +63,33 @@
                 <div class="nav__tools--ico nav__tools--item">
                     <a href="#"><strike><p>ICO</p></strike></a>
                 </div>
+                <select class="custom-select custom-select-sm">
+                    <option selected value="1">USD</option>
+                    <option value="2">BTC</option>
+                </select>
             </div>
             <button class="nav-hamburger">
-                <img src="./images/hamb-nav.png" />
+                <img class="hamburgerImg" alt="hamb-nav" src="./images/hamb-nav.png" />
             </button>
             
         </nav>
         
-            <table class="table table-dark">
+            <table class="table table-dark table-hover">
                     <thead>
                       <tr>
-                        <th scope="col" class="index-column">#</th>
-                        <th scope="col" class="coin-column"></th>
-                        <th scope="col" class="symbol-column">Symbol</th>
-                        <th scope="col" class="marketCap-column">Market Cap</th>
-                        <th scope="col" class="Price-column">Price</th>
-                        <th scope="col" class="1h-column">1H</th>
-                        <th scope="col" class="24h-column">24H</th>
-                        <th scope="col" class="7d-column">7D</th>
-                        <th scope="col" class="volume24h-column">Volume (24h)</th>
+                        <th class="column" scope="col" class="index-column">Rank</th>
+                        <th class="column" scope="col" class="coin-column"></th>
+                        <th class="column" scope="col" class="symbol-column">Symbol</th>
+                        <th class="column" scope="col" class="marketCap-column">Market Cap</th>
+                        <th class="column" scope="col" class="Price-column">Price</th>
+                        <th class="column" scope="col" class="1h-column">1H</th>
+                        <th class="column" scope="col" class="24h-column">24H</th>
+                        <th class="column" scope="col" class="7d-column">7D</th>
+                        <th class="column" scope="col" class="volume24h-column">Volume (24h)</th>
                       </tr>
                     </thead>
                     
-                    <tbody class="table-content">
+                    <tbody class="table-data">
                     
                     </tbody>
                   </table><!-- Content here -->
@@ -79,5 +104,10 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
+    
+    
 </body>
 </html>

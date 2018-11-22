@@ -5,7 +5,31 @@ body {
   width: 100%;
   height: 100%;
   background-color: #24221F; }
+  body .header {
+    width: 100%; }
+    body .header .header__home {
+      width: 86.2%;
+      margin: 25px auto 0 auto;
+      display: flex;
+      align-items: center;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #43D64E; }
+    body .header h1 {
+      font-size: 23px; }
+      body .header h1 a {
+        color: #43D64E;
+        font-family: "Open Sans", sans-serif;
+        text-decoration: none;
+        transition: 0.3s; }
+        body .header h1 a:hover {
+          color: #FCF7F9; }
+        body .header h1 a span {
+          color: #2E8698;
+          font-size: 11px; }
+    body .header .header-logo {
+      width: 50px; }
   body .container-fluid {
+    width: 90%;
     margin-top: 85px;
     position: relative; }
     body .container-fluid .loading {
@@ -16,6 +40,7 @@ body {
       text-align: center; }
     body .container-fluid .market-info {
       color: #FCF7F9;
+      font-family: "Open Sans", sans-serif;
       display: flex;
       width: 95%;
       margin: 0 auto;
@@ -31,15 +56,15 @@ body {
         body .container-fluid .market-info p span {
           color: #FCF7F9;
           font-weight: 100; }
-    @media screen and (max-width: 635px) {
-      body .container-fluid .market-info {
-        display: none; } }
     body .container-fluid .nav-primary {
       background-color: #FCF7F9;
+      font-family: "Dosis", sans-serif;
+      letter-spacing: 1px;
       display: flex;
       align-items: center;
       height: 45px;
-      min-width: 502px; }
+      min-width: 502px;
+      border: 35px 0 0 35px; }
       body .container-fluid .nav-primary .nav__home {
         display: flex; }
         body .container-fluid .nav-primary .nav__home a {
@@ -48,91 +73,78 @@ body {
           text-decoration: none; }
           body .container-fluid .nav-primary .nav__home a .nav-logo {
             width: 42px;
-            margin-left: 15px; }
-          body .container-fluid .nav-primary .nav__home a p {
-            font-family: 'Righteous', cursive;
+            margin-left: 25px; }
+          body .container-fluid .nav-primary .nav__home a .siteName {
+            font-family: "Open Sans", sans-serif;
             color: #24221F;
             font-size: 25px;
             margin-left: 3px;
             transition: 0.3s; }
-            body .container-fluid .nav-primary .nav__home a p:hover {
-              color: rgba(36, 34, 31, 0.488); }
+            body .container-fluid .nav-primary .nav__home a .siteName:hover {
+              color: #43D64E; }
       body .container-fluid .nav-primary .nav__tools {
         display: flex;
         justify-content: flex-end;
         width: 90%;
         margin: 0 auto; }
-        body .container-fluid .nav-primary .nav__tools a {
-          text-decoration: none;
-          color: #000000;
-          font-weight: bold;
-          transition: 0.3s; }
-          body .container-fluid .nav-primary .nav__tools a:hover {
-            color: #43D64E; }
         body .container-fluid .nav-primary .nav__tools .nav__tools--item {
           margin: 0 15px;
           display: flex;
-          align-items: center; }
+          align-items: center;
+          -webkit-transition: 0.5s ease; }
+          body .container-fluid .nav-primary .nav__tools .nav__tools--item a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            transition: 0.3s; }
+        body .container-fluid .nav-primary .nav__tools .custom-select {
+          text-align: left;
+          width: 70px; }
       body .container-fluid .nav-primary .nav-hamburger {
         margin-right: 10px;
         display: none;
         background-color: transparent;
         border: none;
         cursor: pointer; }
-        body .container-fluid .nav-primary .nav-hamburger img {
+        body .container-fluid .nav-primary .nav-hamburger .hamburgerImg {
           width: 25px; }
-      @media screen and (max-width: 770px) {
-        body .container-fluid .nav-primary .nav-hamburger {
-          display: flex; }
-        body .container-fluid .nav-primary .nav__tools--item {
-          display: none; } }
-    body .container-fluid .nav-secondary {
-      display: none;
-      height: 365px; }
     body .container-fluid .table {
       min-width: 502px; }
-      body .container-fluid .table th {
-        text-align: center; }
-      body .container-fluid .table .table-content .row-coin {
-        text-align: center; }
-        body .container-fluid .table .table-content .row-coin .logoNameCoin {
-          display: flex;
-          align-items: center; }
-          body .container-fluid .table .table-content .row-coin .logoNameCoin .checked {
-            background-color: red; }
-          body .container-fluid .table .table-content .row-coin .logoNameCoin .logoCoin {
-            margin-right: 5px; }
-          body .container-fluid .table .table-content .row-coin .logoNameCoin > .logoNameCoin {
-            margin-top: -1px; }
-          body .container-fluid .table .table-content .row-coin .logoNameCoin a {
-            text-decoration: none;
-            color: #ffff; }
-          body .container-fluid .table .table-content .row-coin .logoNameCoin .addCoinFavourite {
-            padding: 5px;
-            margin-left: 15px;
-            background-color: transparent;
-            border-radius: 20px;
-            border: solid #43D64E 1px;
-            cursor: pointer;
-            transition: 0.3s; }
-            body .container-fluid .table .table-content .row-coin .logoNameCoin .addCoinFavourite:hover {
-              background-color: #43D64E; }
-          body .container-fluid .table .table-content .row-coin .logoNameCoin .addCoinFavourite-checked {
-            background-color: #43D64E; }
-      @media screen and (max-width: 1030px) {
-        body .container-fluid .table .volume24h-column, body .container-fluid .table .coinDailyVolume {
-          display: none; } }
-      @media screen and (max-width: 870px) {
-        body .container-fluid .table .coinSymbol, body .container-fluid .table .symbol-column {
-          display: none; }
-        body .container-fluid .table .logoNameCoin {
-          width: 150px;
+      body .container-fluid .table .column {
+        text-align: center;
+        font-family: "Dosis", sans-serif;
+        color: #43D64E; }
+      body .container-fluid .table .table-data {
+        font-size: 13px;
+        font-family: "Open Sans", sans-serif; }
+        body .container-fluid .table .table-data .row-coin {
           text-align: center; }
-          body .container-fluid .table .logoNameCoin p {
-            width: 100px; } }
-      @media screen and (max-width: 715px) {
-        body .container-fluid .table .coinMarketCap, body .container-fluid .table .marketCap-column {
-          display: none; } }
-  @media screen and (max-width: 635px) {
-    body .container-fluid {
-      margin-top: 50px; } }
+          body .container-fluid .table .table-data .row-coin .logoNameAndCoin {
+            margin-top: -1px;
+            display: flex;
+            align-items: center; }
+            body .container-fluid .table .table-data .row-coin .logoNameAndCoin a {
+              text-decoration: none;
+              color: #ffff; }
+            body .container-fluid .table .table-data .row-coin .logoNameAndCoin p {
+              color: #FCF7F9;
+              transition: 0.3s; }
+              body .container-fluid .table .table-data .row-coin .logoNameAndCoin p:hover {
+                color: #43D64E; }
+            body .container-fluid .table .table-data .row-coin .logoNameAndCoin .logoCoin {
+              margin-right: 5px;
+              border-radius: 5px; }
+            body .container-fluid .table .table-data .row-coin .logoNameAndCoin > .logoNameCoin {
+              margin-top: -1px; }
+            body .container-fluid .table .table-data .row-coin .logoNameAndCoin .addCoinFavourite {
+              padding: 5px;
+              margin-left: 15px;
+              background-color: transparent;
+              border-radius: 20px;
+              border: solid #43D64E 1px;
+              cursor: pointer;
+              transition: 0.3s; }
+              body .container-fluid .table .table-data .row-coin .logoNameAndCoin .addCoinFavourite:hover {
+                background-color: #43D64E; }
+            body .container-fluid .table .table-data .row-coin .logoNameAndCoin .addCoinFavourite-checked {
+              background-color: #43D64E; }

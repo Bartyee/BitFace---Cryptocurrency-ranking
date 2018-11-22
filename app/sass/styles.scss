@@ -1,9 +1,15 @@
+//////////////////////////////////////////////////Colors
 $primary-color: #43D64E;
 $secondary-color: #FCF7F9;
 $third-color: #24221F;
 $fourth-color: #2E8698;
 $sixth-color: #205A5E;
 $eight-color: #ff0000;
+//////////////////////////////////////////////////
+$font-OpenSans: 'Open Sans', sans-serif;
+$font-Dosis: 'Dosis', sans-serif;
+//////////////////////////////////////////////////FONTS
+
 
 
 *{
@@ -15,7 +21,45 @@ body{
     height: 100%;
     background-color: $third-color;
 
+    .header{
+        width: 100%;
+
+        .header__home{
+            width: 86.2%;
+            margin: 25px auto 0 auto;
+            display: flex;
+            align-items: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid $primary-color;
+        }
+
+        h1{
+            font-size: 23px;
+
+            a{
+                color: $primary-color;
+                font-family: $font-OpenSans;
+                text-decoration: none;
+                transition: 0.3s;
+
+                &:hover{
+                    color: $secondary-color;
+                }
+
+                span{
+                    color: $fourth-color;
+                    font-size: 11px;
+                }
+            }
+        }
+
+        .header-logo{
+            width: 50px;
+        }
+    }
+
     .container-fluid{
+        width: 90%;
         margin-top: 85px;
         position: relative;
 
@@ -29,6 +73,7 @@ body{
 
         .market-info{
             color: $secondary-color;
+            font-family: $font-OpenSans;
             display: flex;
             width: 95%;
             margin: 0 auto;
@@ -51,24 +96,17 @@ body{
                     font-weight: 100;
                 }
             }
-
-            
         }
-
-        @media screen and(max-width: 635px){
-            .market-info{
-                display: none;
-            }
-        }
-
-        
 
         .nav-primary{
             background-color: $secondary-color;
+            font-family: $font-Dosis;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
             height: 45px;
             min-width: 502px;
+            border: 35px 0 0 35px;
 
             .nav__home{
                 display: flex;
@@ -80,23 +118,21 @@ body{
 
                     .nav-logo{
                         width: 42px;
-                        margin-left: 15px;
+                        margin-left: 25px;
                         
                     }
 
-                    p{
-                        font-family: 'Righteous', cursive;
-                        color: #24221F;
+                    .siteName{
+                        font-family: $font-OpenSans;
+                        color: $third-color;
                         font-size: 25px;
                         margin-left: 3px;
                         transition: 0.3s;
 
                         &:hover{
-                            color: rgba(36, 34, 31, 0.488);
-                            
+                            color: $primary-color;
                         }
                     }
-
                 }
             }
 
@@ -105,25 +141,24 @@ body{
                 justify-content: flex-end;
                 width: 90%;
                 margin: 0 auto;
-
-                a{
-                    text-decoration: none;
-                    color: #000000;
-                    font-weight: bold;
-                    transition: 0.3s;
-
-                    &:hover{
-                        
-                        color: $primary-color;
-                    }
-                }
-
+                
                 .nav__tools--item{
                     margin: 0 15px;
                     display: flex;
                     align-items: center;
+                    -webkit-transition: 0.5s ease;
 
-                    
+                    a{
+                        text-decoration: none;
+                        color: #000000;
+                        font-weight: bold;
+                        transition: 0.3s;
+                    }
+                }
+
+                .custom-select{
+                    text-align: left;
+                    width: 70px;
                 }
             }
 
@@ -134,69 +169,57 @@ body{
                 border: none;
                 cursor: pointer;
 
-                img{
+                .hamburgerImg{
                     width: 25px;
                 }
-
-            }
-
-            @media screen and (max-width: 770px){
-                
-                .nav-hamburger{
-                    display: flex;
-                }
-                .nav__tools--item{
-                    display: none;
-                }
             }
         }
-
-        .nav-secondary{
-            
-            display: none;
-            height: 365px;
-        }
-
+        
         .table{
-
+            
             min-width: 502px;
 
-            th{
+            .column{
                 text-align: center;
+                font-family: $font-Dosis;
+                color: $primary-color;
             }
             
-            .table-content{
+            .table-data{
+                font-size: 13px;
+                font-family: $font-OpenSans;
 
                 .row-coin{
                     text-align: center;
 
-
-                    
-
-                    .logoNameCoin{
+                    .logoNameAndCoin{
+                        margin-top: -1px;
                         display: flex;
                         align-items: center;
-
-                        .checked{
-                            background-color: red;
-                        }
-                        
-                        
-
-                        .logoCoin{
-                            margin-right: 5px;
-                        }
-
-                        & > .logoNameCoin{
-                            margin-top: -1px;
-                        }
-                        
 
                         a{
                             text-decoration: none;
                             color: #ffff;
                         }
 
+                        p{
+                            color: $secondary-color;
+                            transition: 0.3s;
+
+                            &:hover{
+                                color: $primary-color;
+                            }
+                        }
+
+                        .logoCoin{
+                            margin-right: 5px;
+                            border-radius: 5px;
+                        }
+
+                        & > .logoNameCoin{
+                            margin-top: -1px;
+                        }
+                        
                         .addCoinFavourite{
                             padding: 5px;
                             margin-left: 15px;
@@ -209,8 +232,6 @@ body{
                             &:hover{
                                 background-color: $primary-color;
                             }
-
-                            
                         }
 
                         .addCoinFavourite-checked{
@@ -220,41 +241,6 @@ body{
                 }
 
             }
-
-            @media screen and (max-width: 1030px){
-                .volume24h-column, .coinDailyVolume{
-                    display: none;
-                }
-            }
-
-            @media screen and(max-width: 870px){
-                .coinSymbol, .symbol-column{
-                    display: none;
-                }
-
-                .logoNameCoin{
-                    width: 150px;
-                    text-align: center;
-
-                    p{
-                        width: 100px;
-                    }
-                }
-            }
-
-            @media screen and(max-width: 715px){
-                .coinMarketCap, .marketCap-column{
-                    display: none;
-                }
-
-                
-            }
-        }
-    }
-
-    @media screen and(max-width: 635px){
-        .container-fluid{
-            margin-top: 50px;
         }
     }
 }
