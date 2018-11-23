@@ -12,17 +12,6 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet"> 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-
-    
-    
-    
-    
-    
-
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/styles.css" />
     
@@ -32,6 +21,11 @@
         <div class="header__home">
             <img class="header-logo" alt="logo" src="./images/logo.png">
             <h1 class="header__pageName"><a href="#">.BitFace <span class="pageName-betaText">beta</span></a></h1>
+        </div>
+        <div class="header__poweredBy">
+            <p class="poweredBy--text">Powered By: </p>
+            <div class="header__poweredBy--item header__poweredBy--coinmarketCap"><a href="https://coinmarketcap.com/"><img src="./images/CoinMarketCap.png"/></a></div>
+            <div class="header__poweredBy--item header__poweredBy--coinChasing"><a href="https://chasing-coins.com/"><img src="./images/images.png"/></a></div>
         </div>
         
     </header>
@@ -53,6 +47,10 @@
             </div>
 
             <div class="nav__tools">
+                <select class="custom-select custom-select-sm">
+                    <option selected value="1">USD</option>
+                    <option value="2">BTC</option>
+                </select>
                 <input class="findCoinInput" id='myInput' type="text" placeholder="Search coin" />
                 <div class="nav__tools--favourites nav__tools--item">
                     <a href="#"><p>Favourites</p></a>
@@ -63,10 +61,7 @@
                 <div class="nav__tools--ico nav__tools--item">
                     <a href="#"><strike><p>ICO</p></strike></a>
                 </div>
-                <select class="custom-select custom-select-sm">
-                    <option selected value="1">USD</option>
-                    <option value="2">BTC</option>
-                </select>
+                
             </div>
             <button class="nav-hamburger">
                 <img class="hamburgerImg" alt="hamb-nav" src="./images/hamb-nav.png" />
@@ -74,7 +69,7 @@
             
         </nav>
         
-            <table class="table table-dark table-hover">
+            <table class="table table-dark table-hover tablesorter">
                     <thead>
                       <tr>
                         <th class="column" scope="col" class="index-column">Rank</th>
@@ -104,8 +99,6 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
-
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 
     
     

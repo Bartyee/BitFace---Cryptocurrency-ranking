@@ -192,7 +192,8 @@ const controller = (function(UIController){
     }
 
     const searchCoin = () => {
-        let td;
+        let tdFullName;
+        let tdSymbol;
         let input = document.querySelector('.findCoinInput');
         
         let filter = input.value.toUpperCase();
@@ -201,9 +202,10 @@ const controller = (function(UIController){
         
 
         for(let i =0; i<tr.length; i++){
-            td = tr[i].getElementsByTagName('p')[0].childNodes[0].nodeValue;
-            if(td) {
-                if(td.toUpperCase().indexOf(filter) > -1){
+            tdFullName = tr[i].getElementsByTagName('p')[0].childNodes[0].nodeValue;
+            tdSymbol = tr[i].getElementsByTagName('p')[1].childNodes[0].nodeValue;
+            if(tdFullName || tdSymbol) {
+                if(tdFullName.toUpperCase().indexOf(filter) > -1 || tdSymbol.toUpperCase().indexOf(filter) > -1){
                     tr[i].style.display = "";
                 } else{
                     tr[i].style.display = "none";
@@ -254,7 +256,7 @@ const controller = (function(UIController){
 
     const convertPrice = () => {
         let selectInput = document.querySelector(".custom-select");
-        $(selectInput).show();
+        
         let prices = document.getElementsByClassName("coinPrice");
         let coinMarketCap = document.getElementsByClassName("coinMarketCap");
         let volumePrice = document.getElementsByClassName("coinDailyVolume");
@@ -287,6 +289,7 @@ const controller = (function(UIController){
             }).done(res => {
                 btcPrice = res.result;
                 localStorage.setItem("btcPrice",btcPrice);
+                $(selectInput).show();
             })
         }
 

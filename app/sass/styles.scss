@@ -22,15 +22,44 @@ body{
     background-color: $third-color;
 
     .header{
-        width: 100%;
+        width: 70%;
+        margin: 0 auto;
+        display: flex;
+        border-bottom: $primary-color;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        margin-top: 25px;
+        border-bottom: 1px solid $primary-color;
 
         .header__home{
-            width: 86.2%;
-            margin: 25px auto 0 auto;
+            width: 80%;
             display: flex;
             align-items: center;
-            padding-bottom: 25px;
-            border-bottom: 1px solid $primary-color;
+            padding-bottom: 15px;
+            
+        }
+
+        .header__poweredBy{
+            color: red;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+
+            .poweredBy--text{
+                width: 95px;
+                cursor: default;
+                color: $secondary-color;
+                font-family: $font-OpenSans;
+                
+            }
+
+            .header__poweredBy--item img{
+                width: 35px;
+                margin-left: 25px;
+                height: 35px;
+            }
         }
 
         h1{
@@ -153,12 +182,21 @@ body{
                         color: #000000;
                         font-weight: bold;
                         transition: 0.3s;
+
+                        &:hover{
+                            color: $primary-color;
+                        }
                     }
+
+                    
                 }
 
                 .custom-select{
                     text-align: left;
+                    margin-right: 5px;
                     width: 70px;
+                    display: none;
+                    cursor: pointer;
                 }
             }
 
