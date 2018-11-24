@@ -232,9 +232,8 @@ const controller = (function(UIController){
                 }
                 else if(localStorage.getItem(btn[i].parentElement.parentElement.id) != null){
                     localStorage.removeItem(btn[i].parentElement.parentElement.id);
+                    
                 }
-                
-                
             })
         } 
     }
@@ -244,13 +243,37 @@ const controller = (function(UIController){
         let rowCoin = document.querySelectorAll('.row-coin');
         let tableContent = document.querySelector('.table-data').children;
 
+        let showList = false;
+
         favouriteTab.addEventListener("click",function(){
-            $(tableContent).toggle();
+            showList = !showList;
+            if(showList){
+                for(let i=0; i<rowCoin.length; i++){
+                    if($(rowCoin[i]).hasClass("checked")){
+                        $(rowCoin[i]).show();
+                    }
+                    else if(!$(rowCoin[i]).hasClass("checked")){
+                        $(rowCoin[i]).hide();
+                    }
+                }
+            }
+            else{
+                for(let i=0; i<rowCoin.length; i++){
+                    $(rowCoin[i]).show();
+                }
+            }
+            
+            /* showList = !showList;
             for(let i=0; i<=rowCoin.length; i++){
                 if($(rowCoin[i]).hasClass("checked")){
                     $(rowCoin[i]).show();
                 }
+                else{
+                    $(rowCoin[i]).hide();
+                }
             }
+            
+            console.log(showList); */
         })
     }
 
