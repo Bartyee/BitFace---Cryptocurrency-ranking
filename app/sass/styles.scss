@@ -262,31 +262,6 @@ body{
         
         .table{
 
-            
-
-            @media only screen and(max-width: 928px) {
-                .column{
-                    font-size: 12px;
-                }
-
-                .column:nth-child(9){
-                    display: none;
-                }
-
-                .row-coin{
-                    font-size: 9px;
-                }
-
-                .coinDailyVolume{
-                    display: none;
-                }
-
-                img{
-                    width: 20px;
-                    height: 20px;
-                }
-            }
-
             .column{
                 text-align: center;
                 font-family: $font-Dosis;
