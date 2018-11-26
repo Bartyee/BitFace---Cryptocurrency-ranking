@@ -21,6 +21,32 @@ body{
     height: 100%;
     background-color: $third-color;
 
+    // .convertWindow{
+    //     position: fixed;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     z-index: 2;
+    //     width: 50%;
+    //     height: 50%;
+    //     background-color: $third-color;
+    //     color: #ff0000;
+    //     margin: 0 auto;
+    //     border: solid 2.5px black;
+    //     border-radius: 25px;
+    //     top: 30%;
+    //     left: 25%;
+
+    //     .convertWindow__contentWrapper{
+    //         border: solid $primary-color 2px;
+    //         display: flex;
+    //         background-color: $third-color;
+    //         height: 98%;
+    //         border-radius: 20px;
+    //         width: 99%;
+    //     }
+    // }
+
     .header{
         width: 70%;
         margin: 0 auto;
@@ -55,11 +81,43 @@ body{
                 
             }
 
-            .header__poweredBy--item img{
-                width: 35px;
-                margin-left: 25px;
-                height: 35px;
+            .header__poweredBy--coinMarketCap{
+                background: url('../images/CoinMarketCap.png');
+                background-position: center;
+                background-size: cover;
+                width: 40px;
+                height:40px;
+                margin-left: 15px;
+                margin-right: 15px;
+
+                &:hover{
+                    background: url('../images/CoinMarketCapHover.png');
+                    cursor: pointer;
+                    background-position: center;
+                    background-size: cover;
+                    width: 40px;
+                    height: 40px;
+                }
             }
+
+            .header__poweredBy--coinChasing{
+                background: url('../images/imagesH.png');
+                background-position: center;
+                background-size: cover;
+                width: 40px;
+                height: 40px;
+
+                &:hover{
+                    background: url('../images/images.png');
+                    cursor: pointer;
+                    background-position: center;
+                    background-size: cover;
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+
+
         }
 
         h1{
@@ -119,6 +177,7 @@ body{
                 text-align: center;
                 color: $primary-color;
                 font-weight: bold;
+                font-size: 12px;
 
                 span{
                     color: $secondary-color;
@@ -134,7 +193,7 @@ body{
             display: flex;
             align-items: center;
             height: 45px;
-            min-width: 502px;
+            
             border: 35px 0 0 35px;
 
             .nav__home{
@@ -199,23 +258,32 @@ body{
                     cursor: pointer;
                 }
             }
-
-            .nav-hamburger{
-                margin-right: 10px;
-                display: none;
-                background-color: transparent;
-                border: none;
-                cursor: pointer;
-
-                .hamburgerImg{
-                    width: 25px;
-                }
-            }
         }
         
         .table{
-            
-            min-width: 502px;
+
+            @media only screen and(max-width: 928px) {
+                .column{
+                    font-size: 12px;
+                }
+
+                .column:nth-child(9){
+                    display: none;
+                }
+
+                .row-coin{
+                    font-size: 9px;
+                }
+
+                .coinDailyVolume{
+                    display: none;
+                }
+
+                img{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
 
             .column{
                 text-align: center;
@@ -224,7 +292,7 @@ body{
             }
             
             .table-data{
-                font-size: 13px;
+                font-size: 11px;
                 font-family: $font-OpenSans;
 
                 .row-coin{
@@ -232,6 +300,7 @@ body{
 
                     .logoNameAndCoin{
                         margin-top: -1px;
+                        
                         display: flex;
                         align-items: center;
 

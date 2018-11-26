@@ -96,16 +96,10 @@ const controller = (function(UIController){
 
             let favouriteArray = []; // Array with favourite Coins
 
-            let bitcoinPrice;
-            let ethereumPrice;
-
-            
-
             let renderDom = false;
 
                 arrOne.forEach((item,index) => { //get arrOne items and from arrTwo
-                    btcPrice = arrOne[0].price; //Bitcoin is always on 1st place
-                    ethPrice = arrOne[2].price; //Ethereum place, now its 3 :P 
+                     
                     let row = document.createElement('tr');
                     row.className = 'row-coin';
                     row.setAttribute("id", index);
@@ -184,10 +178,9 @@ const controller = (function(UIController){
                 })
 
                 favouriteListClick();
-                convertPrice();
+                convertPriceBTC_USD();
+                convertPriceWindowClick();
             }
-
-            
         }
     }
 
@@ -262,22 +255,10 @@ const controller = (function(UIController){
                     $(rowCoin[i]).show();
                 }
             }
-            
-            /* showList = !showList;
-            for(let i=0; i<=rowCoin.length; i++){
-                if($(rowCoin[i]).hasClass("checked")){
-                    $(rowCoin[i]).show();
-                }
-                else{
-                    $(rowCoin[i]).hide();
-                }
-            }
-            
-            console.log(showList); */
         })
     }
 
-    const convertPrice = () => {
+    const convertPriceBTC_USD = () => {
         let selectInput = document.querySelector(".custom-select");
         
         let prices = document.getElementsByClassName("coinPrice");
@@ -329,13 +310,13 @@ const controller = (function(UIController){
                     for(let i=0; i<prices.length; i++){
                         prices[i].style.color = "#E38215";
                         if(i==0){
-                            prices[i].textContent = "$ 1.00";
+                            prices[i].textContent = "BTC 1.00";
                         }
                         else{
                             prices[i].textContent = prices[i].textContent.replace(/\$/g,'');
                             let text = prices[i].textContent;
                             let convert = parseFloat(text);
-                            prices[i].textContent = '$ ' + (convert * btcPrice).toFixed(8).toString();
+                            prices[i].textContent = "BTC " + (convert * btcPrice).toFixed(8).toString();
                             
                         }
                     }
@@ -346,7 +327,7 @@ const controller = (function(UIController){
                             coinMarketCap[i].textContent = coinMarketCap[i].textContent.replace(/\$/g,'').replace(/\s/g,'');
                             let text = coinMarketCap[i].textContent;
                             let convert = parseFloat(text);
-                            coinMarketCap[i].textContent = '$ ' + parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                            coinMarketCap[i].textContent = "BTC " + parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
                             
                         }
                         else{
@@ -354,11 +335,21 @@ const controller = (function(UIController){
                             coinMarketCap[i].textContent = coinMarketCap[i].textContent.replace(/\$/g,'').replace(/\s/g,'');
                             let text = coinMarketCap[i].textContent;
                             let convert = parseFloat(text);
-                            coinMarketCap[i].textContent = '$ ' + parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                            coinMarketCap[i].textContent = "BTC " + parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
                         }
                     }
                 }
         })
+    }
+
+    const convertPriceWindowClick = (e) => {
+        const prices = document.getElementsByClassName('coinPrice');
+
+        for(let i=0; i<prices.length; i++){
+            prices[i].addEventListener("click",function(){
+                console.log(prices[i].className);
+            })
+        }
     }
     
 

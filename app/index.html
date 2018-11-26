@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BitFace - Cryptocurrency Ranking</title>
 
@@ -24,8 +24,8 @@
         </div>
         <div class="header__poweredBy">
             <p class="poweredBy--text">Powered By: </p>
-            <div class="header__poweredBy--item header__poweredBy--coinmarketCap"><a href="https://coinmarketcap.com/"><img src="./images/CoinMarketCap.png"/></a></div>
-            <div class="header__poweredBy--item header__poweredBy--coinChasing"><a href="https://chasing-coins.com/"><img src="./images/images.png"/></a></div>
+            <div class="header__poweredBy--item header__poweredBy--coinMarketCap"></div>
+            <div class="header__poweredBy--item header__poweredBy--coinChasing"></div>
         </div>
         
     </header>
@@ -55,26 +55,15 @@
                 <div class="nav__tools--favourites nav__tools--item">
                     <a href="#"><p>Favourites</p></a>
                 </div>
-                <div class="nav__tools--calculator nav__tools--item">
-                    <a href="#"><strike><p>Calculator</p></strike></a>
-                </div>
-                <div class="nav__tools--ico nav__tools--item">
-                    <a href="#"><strike><p>ICO</p></strike></a>
-                </div>
-                
             </div>
-            <button class="nav-hamburger">
-                <img class="hamburgerImg" alt="hamb-nav" src="./images/hamb-nav.png" />
-            </button>
-            
         </nav>
         
             <table class="table table-dark table-hover tablesorter">
                     <thead>
                       <tr>
-                        <th class="column" scope="col" class="index-column">Rank</th>
-                        <th class="column" scope="col" class="coin-column"></th>
-                        <th class="column" scope="col" class="symbol-column">Symbol</th>
+                        <th class="column col-1" scope="col" class="index-column">Rank</th>
+                        <th class="column col-2" scope="col" class="coin-column">Name</th>
+                        <th class="column col-1" scope="col" class="symbol-column">Symbol</th>
                         <th class="column" scope="col" class="marketCap-column">Market Cap</th>
                         <th class="column" scope="col" class="Price-column">Price</th>
                         <th class="column" scope="col" class="1h-column">1H</th>

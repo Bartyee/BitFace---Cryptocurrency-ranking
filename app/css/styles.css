@@ -31,10 +31,34 @@ body {
         cursor: default;
         color: #FCF7F9;
         font-family: "Open Sans", sans-serif; }
-      body .header .header__poweredBy .header__poweredBy--item img {
-        width: 35px;
-        margin-left: 25px;
-        height: 35px; }
+      body .header .header__poweredBy .header__poweredBy--coinMarketCap {
+        background: url("../images/CoinMarketCap.png");
+        background-position: center;
+        background-size: cover;
+        width: 40px;
+        height: 40px;
+        margin-left: 15px;
+        margin-right: 15px; }
+        body .header .header__poweredBy .header__poweredBy--coinMarketCap:hover {
+          background: url("../images/CoinMarketCapHover.png");
+          cursor: pointer;
+          background-position: center;
+          background-size: cover;
+          width: 40px;
+          height: 40px; }
+      body .header .header__poweredBy .header__poweredBy--coinChasing {
+        background: url("../images/imagesH.png");
+        background-position: center;
+        background-size: cover;
+        width: 40px;
+        height: 40px; }
+        body .header .header__poweredBy .header__poweredBy--coinChasing:hover {
+          background: url("../images/images.png");
+          cursor: pointer;
+          background-position: center;
+          background-size: cover;
+          width: 40px;
+          height: 40px; }
     body .header h1 {
       font-size: 23px; }
       body .header h1 a {
@@ -73,7 +97,8 @@ body {
       body .container-fluid .market-info p {
         text-align: center;
         color: #43D64E;
-        font-weight: bold; }
+        font-weight: bold;
+        font-size: 12px; }
         body .container-fluid .market-info p span {
           color: #FCF7F9;
           font-weight: 100; }
@@ -84,7 +109,6 @@ body {
       display: flex;
       align-items: center;
       height: 45px;
-      min-width: 502px;
       border: 35px 0 0 35px; }
       body .container-fluid .nav-primary .nav__home {
         display: flex; }
@@ -126,51 +150,53 @@ body {
           width: 70px;
           display: none;
           cursor: pointer; }
-      body .container-fluid .nav-primary .nav-hamburger {
-        margin-right: 10px;
-        display: none;
-        background-color: transparent;
-        border: none;
-        cursor: pointer; }
-        body .container-fluid .nav-primary .nav-hamburger .hamburgerImg {
-          width: 25px; }
-    body .container-fluid .table {
-      min-width: 502px; }
+    @media only screen and (max-width: 928px) {
       body .container-fluid .table .column {
-        text-align: center;
-        font-family: "Dosis", sans-serif;
-        color: #43D64E; }
-      body .container-fluid .table .table-data {
-        font-size: 13px;
-        font-family: "Open Sans", sans-serif; }
-        body .container-fluid .table .table-data .row-coin {
-          text-align: center; }
-          body .container-fluid .table .table-data .row-coin .logoNameAndCoin {
-            margin-top: -1px;
-            display: flex;
-            align-items: center; }
-            body .container-fluid .table .table-data .row-coin .logoNameAndCoin a {
-              text-decoration: none;
-              color: #ffff; }
-            body .container-fluid .table .table-data .row-coin .logoNameAndCoin p {
-              color: #FCF7F9;
-              transition: 0.3s; }
-              body .container-fluid .table .table-data .row-coin .logoNameAndCoin p:hover {
-                color: #43D64E; }
-            body .container-fluid .table .table-data .row-coin .logoNameAndCoin .logoCoin {
-              margin-right: 5px;
-              border-radius: 5px; }
-            body .container-fluid .table .table-data .row-coin .logoNameAndCoin > .logoNameCoin {
-              margin-top: -1px; }
-            body .container-fluid .table .table-data .row-coin .logoNameAndCoin .addCoinFavourite {
-              padding: 5px;
-              margin-left: 15px;
-              background-color: transparent;
-              border-radius: 20px;
-              border: solid #43D64E 1px;
-              cursor: pointer;
-              transition: 0.3s; }
-              body .container-fluid .table .table-data .row-coin .logoNameAndCoin .addCoinFavourite:hover {
-                background-color: #43D64E; }
-            body .container-fluid .table .table-data .row-coin .logoNameAndCoin .addCoinFavourite-checked {
+        font-size: 12px; }
+      body .container-fluid .table .column:nth-child(9) {
+        display: none; }
+      body .container-fluid .table .row-coin {
+        font-size: 9px; }
+      body .container-fluid .table .coinDailyVolume {
+        display: none; }
+      body .container-fluid .table img {
+        width: 20px;
+        height: 20px; } }
+    body .container-fluid .table .column {
+      text-align: center;
+      font-family: "Dosis", sans-serif;
+      color: #43D64E; }
+    body .container-fluid .table .table-data {
+      font-size: 11px;
+      font-family: "Open Sans", sans-serif; }
+      body .container-fluid .table .table-data .row-coin {
+        text-align: center; }
+        body .container-fluid .table .table-data .row-coin .logoNameAndCoin {
+          margin-top: -1px;
+          display: flex;
+          align-items: center; }
+          body .container-fluid .table .table-data .row-coin .logoNameAndCoin a {
+            text-decoration: none;
+            color: #ffff; }
+          body .container-fluid .table .table-data .row-coin .logoNameAndCoin p {
+            color: #FCF7F9;
+            transition: 0.3s; }
+            body .container-fluid .table .table-data .row-coin .logoNameAndCoin p:hover {
+              color: #43D64E; }
+          body .container-fluid .table .table-data .row-coin .logoNameAndCoin .logoCoin {
+            margin-right: 5px;
+            border-radius: 5px; }
+          body .container-fluid .table .table-data .row-coin .logoNameAndCoin > .logoNameCoin {
+            margin-top: -1px; }
+          body .container-fluid .table .table-data .row-coin .logoNameAndCoin .addCoinFavourite {
+            padding: 5px;
+            margin-left: 15px;
+            background-color: transparent;
+            border-radius: 20px;
+            border: solid #43D64E 1px;
+            cursor: pointer;
+            transition: 0.3s; }
+            body .container-fluid .table .table-data .row-coin .logoNameAndCoin .addCoinFavourite:hover {
               background-color: #43D64E; }
+          body .container-fluid .table .table-data .row-coin .logoNameAndCoin .addCoinFavourite-checked {
+            background-color: #43D64E; }
