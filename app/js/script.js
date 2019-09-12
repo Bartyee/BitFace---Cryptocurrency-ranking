@@ -30,7 +30,6 @@ UIController = (function(){
 })();
 
 const controller = (function(UIController){
-
     const getMarketInfo = () => {
         let proxy = 'https://cors-anywhere.herokuapp.com/';
         $.ajax({
@@ -95,6 +94,7 @@ const controller = (function(UIController){
         const buildDOMCurrencyList = (arrOne,arrTwo) =>{ //Two API arrays
 
             let favouriteArray = []; // Array with favourite Coins
+            console.log(arrOne)
 
             let renderDom = false;
 
@@ -179,7 +179,7 @@ const controller = (function(UIController){
 
                 favouriteListClick();
                 convertPriceBTC_USD();
-                convertPriceWindowClick();
+                
             }
         }
     }
@@ -310,13 +310,13 @@ const controller = (function(UIController){
                     for(let i=0; i<prices.length; i++){
                         prices[i].style.color = "#E38215";
                         if(i==0){
-                            prices[i].textContent = "BTC 1.00";
+                            prices[i].textContent = "1.00 BTC";
                         }
                         else{
                             prices[i].textContent = prices[i].textContent.replace(/\$/g,'');
                             let text = prices[i].textContent;
                             let convert = parseFloat(text);
-                            prices[i].textContent = "BTC " + (convert * btcPrice).toFixed(8).toString();
+                            prices[i].textContent = (convert * btcPrice).toFixed(8).toString() + " BTC";
                             
                         }
                     }
@@ -327,7 +327,7 @@ const controller = (function(UIController){
                             coinMarketCap[i].textContent = coinMarketCap[i].textContent.replace(/\$/g,'').replace(/\s/g,'');
                             let text = coinMarketCap[i].textContent;
                             let convert = parseFloat(text);
-                            coinMarketCap[i].textContent = "BTC " + parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                            coinMarketCap[i].textContent = parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " BTC";
                             
                         }
                         else{
@@ -335,25 +335,12 @@ const controller = (function(UIController){
                             coinMarketCap[i].textContent = coinMarketCap[i].textContent.replace(/\$/g,'').replace(/\s/g,'');
                             let text = coinMarketCap[i].textContent;
                             let convert = parseFloat(text);
-                            coinMarketCap[i].textContent = "BTC " + parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                            coinMarketCap[i].textContent = parseInt((convert*btcPrice)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " BTC";
                         }
                     }
                 }
         })
     }
-
-    const convertPriceWindowClick = (e) => {
-        const prices = document.getElementsByClassName('coinPrice');
-
-        for(let i=0; i<prices.length; i++){
-            prices[i].addEventListener("click",function(){
-                console.log(prices[i].className);
-            })
-        }
-    }
-    
-
-    
 
     return{
         init: function(){
