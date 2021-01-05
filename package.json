@@ -9,7 +9,7 @@
   "author": "Bartłomiej Pawelec",
   "license": "ISC",
   "devDependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-minify": "^0.5.0",
     "bootstrap-table": "^1.12.1",
     "browser-sync": "^2.26.3",
